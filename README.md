@@ -5,3 +5,6 @@ This project is following the steps in this kata: https://katalyst.codurance.com
 3. Work out total word count
 4. Work out the average reading time for given paragraph based on 200 words per minute
 5. Create a way of inputting a piece of text that should be ignored
+
+Potentional use-cases:
+- hyphenated words
