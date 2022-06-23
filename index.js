@@ -1,18 +1,21 @@
-function topTenList(textString) {
-    //parse words considering white space, commas, dashes, period (e.g. mid-day) into maybe a dictionary key = word value = word count
-    
-    textString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+const text = {
+	topTenList(textString) {
+		//parse words considering white space, commas, dashes, period (e.g. mid-day) into maybe a dictionary key = word value = word count
 
-    const wordsArray = textString.split(" ");
-    console.log(wordsArray);
+		const wordsArray = textString.split(" ");
+		console.log(wordsArray);
 
-    
+		const wordCount = {};
 
-    const wordCount = {}
+		//count words
 
-    //count words
+		//display numbered list
+	},
 
-    //display numbered list
-}
+	stripPunctuation(textString) {
+		const stripped = textString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+		return stripped;
+	},
+};
 
-module.exports = topTenList; 
+module.exports = text;
