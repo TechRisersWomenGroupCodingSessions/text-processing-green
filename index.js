@@ -29,6 +29,16 @@ const text = {
 	countWords(textString) {
 		return this.getWords(textString).length;
 	},
+
+	wordOccurrences(textString) {
+		return this.getWords(textString).reduce(function (obj, word) {
+			if (!obj[word]) {
+				obj[word] = 0;
+			}
+			obj[word]++;
+			return obj;
+		}, {});
+	},
 };
 
 module.exports = text;

@@ -19,6 +19,15 @@ describe("index", () => {
 		expect(text.countWords(textString)).toBe(3);
 	});
 
+	it("creates an object of key value pairs of words and the number of times they appear in the text", () => {
+		const textString = "hello, hello, hello you!";
+
+		expect(text.wordOccurrences(textString)).toStrictEqual({
+			hello: 3,
+			you: 1,
+		});
+	});
+
 	// it("evaluates the text and returns a list of the top 10 used words", () => {
 	// 	const text = "Hello, hello you";
 
