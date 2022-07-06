@@ -1,7 +1,6 @@
 const text = {
-
 	wordsArray: [],
-	
+
 	topTenList(textString) {
 		//parse words considering white space, commas, dashes, period (e.g. mid-day) into maybe a dictionary key = word value = word count
 
@@ -25,7 +24,11 @@ const text = {
 		this.wordsArray = strippedText.split(" ");
 
 		return this.wordsArray;
-	}
+	},
+
+	countWords(textString) {
+		return this.getWords(textString).length;
+	},
 };
 
 module.exports = text;
