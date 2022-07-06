@@ -7,9 +7,15 @@ describe("index", () => {
 		expect(text.stripPunctuation(textString)).toBe("hello hello you");
 	});
 
-	// it("evaluates the text and returns a list of the top 10 used words", () => {
-	// 	const text = "Hello, hello you";
+	it("punctuation stripped text is parsed into wordsArray", () => {
+		const textString = "hello, hello you!";
 
-	// 	expect(topTenList(text)).toBe("1. hello\n 2. you");
-	// });
+		expect(text.getWords(textString)).toBe([hello, hello, you]);
+
+		// it("evaluates the text and returns a list of the top 10 used words", () => {
+		// 	const text = "Hello, hello you";
+
+		// 	expect(topTenList(text)).toBe("1. hello\n 2. you");
+		// });
+	});
 });
