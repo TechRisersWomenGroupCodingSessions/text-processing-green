@@ -21,7 +21,8 @@ const text = {
 
 	getWords(textString) {
 		let strippedText = this.stripPunctuation(textString);
-		this.wordsArray = strippedText.split(" ");
+        
+		this.wordsArray = strippedText.toLowerCase().split(" ");
 
 		return this.wordsArray;
 	},
