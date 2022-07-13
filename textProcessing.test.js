@@ -20,10 +20,10 @@ describe("index", () => {
 	});
 
 	it("creates an object of key value pairs of words and the number of times they appear in the text", () => {
-		const textString = "hello, hello, hello you!";
+		const textString = "Hello, hello you!";
 
 		expect(text.wordOccurrences(textString)).toStrictEqual({
-			hello: 3,
+			hello: 2,
 			you: 1,
 		});
 	});
