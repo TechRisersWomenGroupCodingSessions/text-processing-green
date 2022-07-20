@@ -44,4 +44,3 @@ const text = {
 
 module.exports = text;
 
-// test
