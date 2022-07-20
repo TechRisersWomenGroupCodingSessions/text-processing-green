@@ -1,6 +1,6 @@
 const text = {
 	wordsArray: [],
-
+	
 	topTenList(textString) {
 		//parse words considering white space, commas, dashes, period (e.g. mid-day) into maybe a dictionary key = word value = word count
 
@@ -31,15 +31,21 @@ const text = {
 		return this.getWords(textString).length;
 	},
 
+	
 	wordOccurrences(textString) {
-		return this.getWords(textString).reduce(function (obj, word) {
+		
+		const wordRank = this.getWords(textString).reduce(function (obj, word) {
 			if (!obj[word]) {
 				obj[word] = 0;
 			}
 			obj[word]++;
 			return obj;
 		}, {});
+		
+		return Object.keys(wordRank).sort((a,b) => wordRank[b]-wordRank[a])
 	},
+	
+	
 };
 
 module.exports = text;

@@ -21,7 +21,8 @@ describe("index", () => {
 
 	it("creates an object of key value pairs of words and the number of times they appear in the text", () => {
 		const textString = "Hello, hello you!";
-
+		console.log(text.wordOccurrences(textString))
+		console.log(text.frequencies)
 		expect(text.wordOccurrences(textString)).toStrictEqual({
 			hello: 2,
 			you: 1,
@@ -30,7 +31,8 @@ describe("index", () => {
 
 	it("evaluates the text and returns a list of the top 10 used words", () => {
 		const text = "Hello, hello you";
-
+		
 		expect(topTenList(text)).toStrictEqual("1. hello\n 2. you");
 	});
 });
+
