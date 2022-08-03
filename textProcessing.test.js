@@ -31,19 +31,24 @@ describe("index", () => {
 
 	it("creates an array of all the words ordered by the number of occurences of each word", () => {
 		const textString = "Hello, hello you!";
-		expect(text.orderedOccurrences(textString)).toStrictEqual(["hello", "you"]);
+		expect(text.getOrderedOccurrences(textString)).toStrictEqual(["hello", "you"]);
 	});
 
 	it("evaluates the text and returns a list of the top 10 used words", () => {
-		const text =
+		const textString =
 			"Hello, hello you you you are are are are very very very very very hot hot hot hot hot hot hot today";
 
-		expect(topTenList(text)).toStrictEqual([
-			"hot",
-			"very",
-			"are",
-			"you",
-			"hello",
+		expect(text.topTenList(textString)).toStrictEqual([
+			"1. hot",
+			"2. very",
+			"3. are",
+			"4. you",
+			"5. hello",
+			"6. ",
+			"7. ",
+			"8. ",
+			"9. ",
+			"10. ",
 		]);
 	});
 });
