@@ -3,13 +3,19 @@ const text = {
 
 	topTenList(textString) {
 		const orderedWordsArray = this.getOrderedOccurrences(textString);
-		console.log(orderedWordsArray);
 
 		let topTenString = "";
 		for (let i = 0; i < 10; i++) {
-			topTenString += `${i + 1}. ${orderedWordsArray[i]}\r\n`;
+			let currentWord = orderedWordsArray[i];
+			if (currentWord) {
+				topTenString += `${i + 1}. ${orderedWordsArray[i]}\r\n`;
+			}
+			else {
+				topTenString += `${i + 1}. \r\n`;
+			}
 		}
 
+		console.log(topTenString);
 		return topTenString;
 	},
 
