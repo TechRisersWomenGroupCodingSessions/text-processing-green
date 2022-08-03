@@ -7,8 +7,7 @@ const text = {
 
 		let topTenString = "";
 		for (let i = 0; i < 10; i++) {
-			
-			topTen += "";
+			topTenString += `${i + 1}. ${orderedWordsArray[i]}\r\n`;
 		}
 
 		return topTenString;
