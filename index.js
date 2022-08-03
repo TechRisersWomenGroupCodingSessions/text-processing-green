@@ -1,6 +1,6 @@
 const text = {
 	wordsArray: [],
-	
+
 	topTenList(textString) {
 		//parse words considering white space, commas, dashes, period (e.g. mid-day) into maybe a dictionary key = word value = word count
 
@@ -21,7 +21,7 @@ const text = {
 
 	getWords(textString) {
 		let strippedText = this.stripPunctuation(textString);
-        
+
 		this.wordsArray = strippedText.toLowerCase().split(" ");
 
 		return this.wordsArray;
@@ -31,9 +31,7 @@ const text = {
 		return this.getWords(textString).length;
 	},
 
-	
 	wordOccurrences(textString) {
-		
 		const wordRank = this.getWords(textString).reduce(function (obj, word) {
 			if (!obj[word]) {
 				obj[word] = 0;
@@ -41,12 +39,17 @@ const text = {
 			obj[word]++;
 			return obj;
 		}, {});
-		
-		return Object.keys(wordRank).sort((a,b) => wordRank[b]-wordRank[a])
+
+		return wordRank;
 	},
-	
-	
+
+	orderedOccurrences(textString) {
+		const wordFrequencies = this.wordOccurrences(textString);
+
+		return Object.keys(wordFrequencies).sort(
+			(a, b) => wordFrequencies[b] - wordFrequencies[a]
+		);
+	},
 };
 
 module.exports = text;
-
