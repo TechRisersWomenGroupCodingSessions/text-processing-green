@@ -4,13 +4,12 @@ const text = {
 	topTenList(textString) {
 		const orderedWordsArray = this.getOrderedOccurrences(textString);
 
-		let topTenString = "";
+		let topTenString = "Those are the top 10 words used:\r\n\r\n";
 		for (let i = 0; i < 10; i++) {
 			let currentWord = orderedWordsArray[i];
 			if (currentWord) {
 				topTenString += `${i + 1}. ${orderedWordsArray[i]}\r\n`;
-			}
-			else {
+			} else {
 				topTenString += `${i + 1}. \r\n`;
 			}
 		}
