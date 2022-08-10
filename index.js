@@ -14,7 +14,10 @@ const text = {
 			}
 		}
 
+		let wordCount = this.countWords(textString);
+		topTenString += `\r\nThe text has in total ${wordCount} words`;
 		console.log(topTenString);
+
 		return topTenString;
 	},
 
