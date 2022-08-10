@@ -40,9 +40,10 @@ describe("index", () => {
 	it("evaluates the text and returns a list of the top 10 used words", () => {
 		const textString =
 			"Hello, hello you you you are are are are very very very very very hot hot hot hot hot hot hot today";
+		const wordCount = text.countWords(textString);
 
 		expect(text.topTenList(textString)).toStrictEqual(
-			"Those are the top 10 words used:\r\n\r\n1. hot\r\n2. very\r\n3. are\r\n4. you\r\n5. hello\r\n6. today\r\n7. \r\n8. \r\n9. \r\n10. \r\n"
+			`Those are the top 10 words used:\r\n\r\n1. hot\r\n2. very\r\n3. are\r\n4. you\r\n5. hello\r\n6. today\r\n7. \r\n8. \r\n9. \r\n10. \r\n The text has in total ${wordCount} words`
 		);
 	});
 });
