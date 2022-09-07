@@ -57,6 +57,8 @@ const text = {
 			(a, b) => wordFrequencies[b] - wordFrequencies[a]
 		);
 	},
+
+	
 };
 
 module.exports = text;
