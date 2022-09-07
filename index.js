@@ -58,8 +58,10 @@ const text = {
 		);
 	},
 
-	readingTime(textString) {
-		this.countWords(textString);
+	getReadingTime(textString) {
+		const avgReadingMinutes = Math.floor(this.countWords(textString) / 200);
+		const remainderReadingSecs = this.countWords(textString) % 200;
+
 		return 2;
 	},
 };
