@@ -58,7 +58,10 @@ const text = {
 		);
 	},
 
-	
+	readingTime(textString) {
+		this.countWords(textString);
+		return 2;
+	},
 };
 
 module.exports = text;
