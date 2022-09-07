@@ -60,10 +60,11 @@ const text = {
 
 	getReadingTime(textString) {
 		const avgReadingMinutes = Math.floor(this.countWords(textString) / 200);
-		const remainderReadingSecs = this.countWords(textString) % 200;
-
+		const remainderReadingSecs = this.countWords(textString) % 200 / 200 * 0.60;
+		
 		return 2;
 	},
+	
 };
 
 module.exports = text;
