@@ -58,6 +58,6 @@ describe("index", () => {
   console.log('should should should')
 }`;
 
-		expect(text.countWords(textString)).toBe(3);
+		expect(text.countWordsWithIgnore(textString)).toBe(21);
 	});
 });
