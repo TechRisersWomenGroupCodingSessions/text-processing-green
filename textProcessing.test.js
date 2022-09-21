@@ -54,12 +54,12 @@ describe("index", () => {
 
 	it("counts the total number of words in the text", () => {
 		const textString = `Hello, this is an example for you to practice. You should grab this text and make it as your test case:
-		<script type="text/javascript" charset="utf-8" nonce="">
+		<script type="text/javascript">
 		if (true) {
   			console.log('should should should')
 		};
 		</script>`
 
-		expect(text.countWordsWithIgnore(textString)).toBe(21);
+		expect(text.countWordsWithIgnoreCode(textString)).toBe(21);
 	});
 });

@@ -70,8 +70,10 @@ const text = {
 		};
 	},
 
-	countWordsWithIgnore(textString) {
-
+	countWordsWithIgnoreCode(textString) {
+		const start = `<script type="text/javascript">`;
+		const end = "</script>";
+		
 		return this.countWords(textString);
 	}
 
