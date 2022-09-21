@@ -66,12 +66,13 @@ const text = {
 		if (remainderReadingSecs < 0.3) {
 			return avgReadingMinutes
 		} else {
-		return avgReadingMinutes + Math.ceil(remainderReadingSecs);
+			return avgReadingMinutes + Math.ceil(remainderReadingSecs);
 		};
 	},
 
 	countWordsWithIgnore(textString) {
-		return 21
+
+		return this.countWords(textString);
 	}
 
 
