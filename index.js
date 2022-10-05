@@ -27,7 +27,6 @@ const text = {
 	},
 
 	getWords(textString) {
-
 		let strippedText = this.stripPunctuation(textString);
 
 		this.wordsArray = strippedText.toLowerCase().split(" ");
@@ -60,19 +59,18 @@ const text = {
 	},
 
 	getReadingTime(textString) {
-
 		const avgReadingMinutes = Math.floor(this.countWords(textString) / 200);
-		const remainderReadingSecs = this.countWords(textString) % 200 / 200 * 0.60;
+		const remainderReadingSecs =
+			((this.countWords(textString) % 200) / 200) * 0.6;
 		console.log(remainderReadingSecs);
 		if (remainderReadingSecs < 0.3) {
-			return avgReadingMinutes
+			return avgReadingMinutes;
 		} else {
 			return avgReadingMinutes + Math.ceil(remainderReadingSecs);
-		};
+		}
 	},
 
 	countWordsWithIgnoreCode(textString) {
-		
 		return this.stripScript(textString);
 	},
 
@@ -80,12 +78,14 @@ const text = {
 		const start = `<script type="text/javascript">`;
 		const end = "</script>";
 
-		console.log(textString.indexOf(start));
-		const stripped = textString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-		
-		return stripped;
-	},
+		const ignoreStartIndex = textString.indexOf(start);
+		const ignoreEndIndex = textString.indexOf(end) + end.length;
+		console.log(ignoreEndIndex);
 
+		const ignoreString = textString.slice(ignoreStartIndex, ignoreEndIndex);
+
+		return textString.replace(ignoreString, "");
+	},
 };
 
 module.exports = text;
