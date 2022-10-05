@@ -27,6 +27,7 @@ const text = {
 	},
 
 	getWords(textString) {
+
 		let strippedText = this.stripPunctuation(textString);
 
 		this.wordsArray = strippedText.toLowerCase().split(" ");
@@ -71,12 +72,19 @@ const text = {
 	},
 
 	countWordsWithIgnoreCode(textString) {
+		
+		return this.stripScript(textString);
+	},
+
+	stripScript(textString) {
 		const start = `<script type="text/javascript">`;
 		const end = "</script>";
-		
-		return this.countWords(textString);
-	}
 
+		console.log(textString.indexOf(start));
+		const stripped = textString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+		
+		return stripped;
+	},
 
 };
 
