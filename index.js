@@ -1,8 +1,9 @@
 const text = {
 	wordsArray: [],
 
-	topTenList(textString) {
-		const orderedWordsArray = this.getOrderedOccurrences(textString);
+	topTenList(textString, ignoreScript) {
+		let processingString = this.stripScript(textString);
+		const orderedWordsArray = this.getOrderedOccurrences(processingString);
 
 		let topTenString = "Those are the top 10 words used:\r\n\r\n";
 		for (let i = 0; i < 10; i++) {
@@ -14,7 +15,7 @@ const text = {
 			}
 		}
 
-		let wordCount = this.countWords(textString);
+		let wordCount = this.countWords(processingString);
 		topTenString += `\r\nThe text has in total ${wordCount} words`;
 		console.log(topTenString);
 
@@ -71,7 +72,8 @@ const text = {
 	},
 
 	countWordsWithIgnoreCode(textString) {
-		return this.stripScript(textString);
+
+		return this.countWords(this.stripScript(textString));
 	},
 
 	stripScript(textString) {
@@ -80,8 +82,7 @@ const text = {
 
 		const ignoreStartIndex = textString.indexOf(start);
 		const ignoreEndIndex = textString.indexOf(end) + end.length;
-		console.log(ignoreEndIndex);
-
+		
 		const ignoreString = textString.slice(ignoreStartIndex, ignoreEndIndex);
 
 		return textString.replace(ignoreString, "");
