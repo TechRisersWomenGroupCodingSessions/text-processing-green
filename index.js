@@ -1,9 +1,13 @@
 const text = {
 	wordsArray: [],
 
-	topTenList(textString, ignoreScript) {
+	topTenList(textString, ignoreScript, stopWords) {
 		if (ignoreScript) {
 			textString = this.stripScript(textString);
+		}
+
+		if (stopWords) {
+			textString = this.stripStopWords(textString, stopWords);
 		}
 
 		const orderedWordsArray = this.getOrderedOccurrences(textString);
@@ -89,6 +93,12 @@ const text = {
 
 		return textString.replace(ignoreString, "");
 	},
+
+	stripStopWords(textString, stopWords) {
+		let strippedText = textString.replace(stopWords, "");
+		console.log(strippedText);
+		return strippedText;
+	}
 };
 
 module.exports = text;
