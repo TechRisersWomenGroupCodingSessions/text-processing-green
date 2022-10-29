@@ -95,7 +95,8 @@ const text = {
 	},
 
 	stripStopWords(textString, stopWords) {
-		let strippedText = textString.replace(/[stopWords]/g, "");
+		let regex = new RegExp(stopWords, "g");
+		let strippedText = textString.replace(regex, "");
 		console.log(strippedText);
 
 		return strippedText;
