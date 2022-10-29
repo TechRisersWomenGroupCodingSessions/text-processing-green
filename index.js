@@ -8,9 +8,9 @@ const text = {
 
 		if (stopWords) {
 			textString = this.stripStopWords(textString, stopWords);
-			console.log(`Stripped stopwords ${textString}`);
 		}
 
+		console.log(`Stripped stopwords ${textString}`);
 		const orderedWordsArray = this.getOrderedOccurrences(textString);
 
 		let topTenString = "Those are the top 10 words used:\r\n\r\n";
@@ -94,25 +94,27 @@ const text = {
 		return textString.replace(ignoreString, "");
 	},
 
-	stripStopWords(textString, stopWords) {
-		let stopWordsArray = [];
+	stripStopWords(textString, stopWordsArray) {
+		let stripWordsArray = [];
 
-		if (!/\s/g.test(stopWords)) {
-			stopWordsArray.push(stopWords + " ");
-			stopWordsArray.push(" " + stopWords);
+		for (let i = 0; i < stopWordsArray.length; i++) {
+			if (!/\s/g.test(stopWordsArray[i])) {
+				stripWordsArray.push(stopWordsArray[i] + " ");
+				stripWordsArray.push(" " + stopWordsArray[i]);
+			}
+
+			stripWordsArray.push(stopWordsArray[i]);
 		}
 
-		stopWordsArray.push(stopWords);
-		console.log(stopWordsArray);
+		console.log(stripWordsArray);
 
 		//loop through array with both version of space
 		let strippedText = textString;
-		for (let i = 0; i < stopWordsArray.length; i++) {
-			let regex = new RegExp(stopWordsArray[i], "g");
+		for (let i = 0; i < stripWordsArray.length; i++) {
+			let regex = new RegExp(stripWordsArray[i], "gi");
 			strippedText = strippedText.replace(regex, "");
-			console.log(strippedText);
 		}
-		console.log(strippedText);
+
 		return strippedText;
 	},
 };
