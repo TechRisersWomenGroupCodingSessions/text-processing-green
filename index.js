@@ -95,6 +95,14 @@ const text = {
 	},
 
 	stripStopWords(textString, stopWords) {
+		let stopWordsArray = [stopWords];
+
+		if (!(/\s/g.test(stopWords))) {
+			stopWords = stopWords + " ";
+			console.log("stopWords " + stopWords + ".");
+		}
+
+		//loop through array with both version of space
 		let regex = new RegExp(stopWords, "g");
 		let strippedText = textString.replace(regex, "");
 		console.log(strippedText);
