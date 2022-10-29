@@ -8,6 +8,7 @@ const text = {
 
 		if (stopWords) {
 			textString = this.stripStopWords(textString, stopWords);
+			console.log(`Stripped stopwords ${textString}`);
 		}
 
 		const orderedWordsArray = this.getOrderedOccurrences(textString);
@@ -24,7 +25,6 @@ const text = {
 
 		let wordCount = this.countWords(textString);
 		topTenString += `\r\nThe text has in total ${wordCount} words`;
-		console.log(topTenString);
 
 		return topTenString;
 	},
@@ -95,10 +95,11 @@ const text = {
 	},
 
 	stripStopWords(textString, stopWords) {
-		let strippedText = textString.replace(stopWords, "");
+		let strippedText = textString.replaceAll(stopWords, "");
 		console.log(strippedText);
+
 		return strippedText;
-	}
+	},
 };
 
 module.exports = text;

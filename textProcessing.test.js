@@ -63,21 +63,6 @@ describe("index", () => {
 		expect(text.countWordsWithIgnoreCode(textString)).toBe(21);
 	});
 
-	// it("evaluates the text ignoring script code and returns a list of the top 10 used words", () => {
-	// 	const textString = `Hello, this is an example for you to practice. You should grab this text and make it as your test case:
-	// <script type="text/javascript">
-	// if (true) {
-	// 	console.log('should should should')
-	// };
-	// </script>`
-
-	// 	let ignoreScript = true;
-
-	// 	expect(text.topTenList(textString, ignoreScript)).toStrictEqual(
-	// 		`Those are the top 10 words used:\r\n\r\n1. you\r\n2. this\r\n3. your\r\n4. to\r\n5. text\r\n6. test\r\n7. should\r\n8. practice\r\n9. make\r\n10. it\r\n\r\nThe text has in total 21 words`
-	// 	);
-
-	// });
 	it("evaluates the text and returns a list of the top 10 used words without including the script text to ignore", () => {
 		const textString = `Hello, hello you you you <script type="text/javascript">
 		if (true) {
@@ -91,7 +76,7 @@ describe("index", () => {
 	});
 
 	it("evaluates the text and returns a list of the top 10 used words without including the script text to ignore", () => {
-		const textString = `Hello, hello you you you are are are are very very very very very hot hot hot hot hot hot hot today`;
+		const textString = `Hello, hello you today you you are are are are very very very very very hot hot hot hot hot hot hot today`;
 
 		expect(text.topTenList(textString, false, `today`)).toStrictEqual(
 			`Those are the top 10 words used:\r\n\r\n1. hot\r\n2. very\r\n3. are\r\n4. you\r\n5. hello\r\n6. \r\n7. \r\n8. \r\n9. \r\n10. \r\n\r\nThe text has in total 21 words`
