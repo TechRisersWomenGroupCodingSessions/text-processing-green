@@ -78,7 +78,7 @@ describe("index", () => {
 	it("evaluates the text and returns a list of the top 10 used words without including a stop word not case sensitive to ignore", () => {
 		const textString = `Hello, hello you today you you are are are are very very very very very hot hot hot hot hot hot hot today`;
 
-		expect(text.topTenList(textString, false, "Today")).toStrictEqual(
+		expect(text.topTenList(textString, false, ["Today"])).toStrictEqual(
 			`Those are the top 10 words used:\r\n\r\n1. hot\r\n2. very\r\n3. are\r\n4. you\r\n5. hello\r\n6. \r\n7. \r\n8. \r\n9. \r\n10. \r\n\r\nThe text has in total 21 words`
 		);
 	});
