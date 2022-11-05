@@ -1,20 +1,22 @@
 const text = {
 	wordsArray: [],
+	punctuationIsStripped: false,
 
 	topTenList(textString, ignoreScript, stopWords) {
 		if (ignoreScript) {
 			textString = this.stripScript(textString);
 		}
 
-		let strippedText = this.stripPunctuation(textString);
-		console.log(`Stripped text ${strippedText}`);
-
+		if (!this.punctuationIsStripped) {
+			textString = this.stripPunctuation(textString);
+			console.log(`Stripped text ${textString}`);
+		}
 		if (stopWords) {
-			strippedText = this.stripStopWords(strippedText, stopWords);
-			console.log(`Stripped stopwords text ${strippedText}`);
+			textString = this.stripStopWords(textString, stopWords);
+			console.log(`Stripped stopwords text ${textString}`);
 		}
 
-		const orderedWordsArray = this.getOrderedOccurrences(strippedText);
+		const orderedWordsArray = this.getOrderedOccurrences(textString);
 
 		let topTenString = "Those are the top 10 words used:\r\n\r\n";
 		for (let i = 0; i < 10; i++) {
@@ -34,10 +36,15 @@ const text = {
 
 	stripPunctuation(textString) {
 		const stripped = textString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+		this.punctuationIsStripped = true;
 		return stripped;
 	},
 
 	getWords(textString) {
+		if (!punctuationIsStripped) {
+			textString = this.stripPunctuation(textString);
+		}
+
 		this.wordsArray = textString.toLowerCase().split(" ");
 
 		return this.wordsArray;
