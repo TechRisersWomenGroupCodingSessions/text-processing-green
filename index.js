@@ -7,13 +7,15 @@ const text = {
 			textString = this.stripScript(textString);
 		}
 
-		if (!this.punctuationIsStripped) {
+		console.log(`Is the punctuation stripped? ${this.punctuationIsStripped}`);
+
+		if (this.punctuationIsStripped === false) {
 			textString = this.stripPunctuation(textString);
-			console.log(`Stripped text ${textString}`);
+			console.log(`Stripped text: ${textString}`);
 		}
 		if (stopWords) {
 			textString = this.stripStopWords(textString, stopWords);
-			console.log(`Stripped stopwords text ${textString}`);
+			console.log(`Stripped stopwords: ${textString}`);
 		}
 
 		const orderedWordsArray = this.getOrderedOccurrences(textString);
@@ -28,7 +30,7 @@ const text = {
 			}
 		}
 
-		let wordCount = this.countWords(strippedText);
+		let wordCount = this.countWords(textString);
 		topTenString += `\r\nThe text has in total ${wordCount} words`;
 
 		return topTenString;
@@ -36,12 +38,12 @@ const text = {
 
 	stripPunctuation(textString) {
 		const stripped = textString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-		this.punctuationIsStripped = true;
+		text["punctuationIsStripped"] = true;
 		return stripped;
 	},
 
 	getWords(textString) {
-		if (!punctuationIsStripped) {
+		if (!this.punctuationIsStripped) {
 			textString = this.stripPunctuation(textString);
 		}
 
@@ -124,6 +126,10 @@ const text = {
 		}
 
 		return strippedText;
+	},
+
+	resetPunctuationFlag() {
+		text["punctuationIsStripped"] = false;
 	},
 };
 
