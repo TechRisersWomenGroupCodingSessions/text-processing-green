@@ -6,12 +6,15 @@ const text = {
 			textString = this.stripScript(textString);
 		}
 
+		let strippedText = this.stripPunctuation(textString);
+		console.log(`Stripped text ${strippedText}`);
+
 		if (stopWords) {
-			textString = this.stripStopWords(textString, stopWords);
+			strippedText = this.stripStopWords(strippedText, stopWords);
+			console.log(`Stripped stopwords text ${strippedText}`);
 		}
 
-		console.log(`Stripped stopwords ${textString}`);
-		const orderedWordsArray = this.getOrderedOccurrences(textString);
+		const orderedWordsArray = this.getOrderedOccurrences(strippedText);
 
 		let topTenString = "Those are the top 10 words used:\r\n\r\n";
 		for (let i = 0; i < 10; i++) {
@@ -23,7 +26,7 @@ const text = {
 			}
 		}
 
-		let wordCount = this.countWords(textString);
+		let wordCount = this.countWords(strippedText);
 		topTenString += `\r\nThe text has in total ${wordCount} words`;
 
 		return topTenString;
@@ -35,9 +38,7 @@ const text = {
 	},
 
 	getWords(textString) {
-		let strippedText = this.stripPunctuation(textString);
-
-		this.wordsArray = strippedText.toLowerCase().split(" ");
+		this.wordsArray = textString.toLowerCase().split(" ");
 
 		return this.wordsArray;
 	},
