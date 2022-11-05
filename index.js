@@ -7,15 +7,11 @@ const text = {
 			textString = this.stripScript(textString);
 		}
 
-		console.log(`Is the punctuation stripped? ${this.punctuationIsStripped}`);
-
-		if (this.punctuationIsStripped === false) {
+		if (!this.punctuationIsStripped) {
 			textString = this.stripPunctuation(textString);
-			console.log(`Stripped text: ${textString}`);
 		}
 		if (stopWords) {
 			textString = this.stripStopWords(textString, stopWords);
-			console.log(`Stripped stopwords: ${textString}`);
 		}
 
 		const orderedWordsArray = this.getOrderedOccurrences(textString);
@@ -32,7 +28,8 @@ const text = {
 
 		let wordCount = this.countWords(textString);
 		topTenString += `\r\nThe text has in total ${wordCount} words`;
-
+		console.log(topTenString);
+		
 		return topTenString;
 	},
 
@@ -80,8 +77,8 @@ const text = {
 		const avgReadingMinutes = Math.floor(this.countWords(textString) / 200);
 		const remainderReadingSecs =
 			((this.countWords(textString) % 200) / 200) * 0.6;
-		console.log(remainderReadingSecs);
-		if (remainderReadingSecs < 0.3) {
+
+			if (remainderReadingSecs < 0.3) {
 			return avgReadingMinutes;
 		} else {
 			return avgReadingMinutes + Math.ceil(remainderReadingSecs);
@@ -116,8 +113,6 @@ const text = {
 			stripWordsArray.push(stopWordsArray[i]);
 		}
 
-		console.log(stripWordsArray);
-
 		//loop through array with both version of space
 		let strippedText = textString;
 		for (let i = 0; i < stripWordsArray.length; i++) {
@@ -128,7 +123,7 @@ const text = {
 		return strippedText;
 	},
 
-	resetPunctuationFlag() {
+	resetDefaults() {
 		text["punctuationIsStripped"] = false;
 	},
 };

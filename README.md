@@ -5,7 +5,7 @@ This project is following the steps in this kata: https://katalyst.codurance.com
 3. Work out total word count from length of word array (DONE)
 4. Work out the average reading time for given paragraph based on 200 words per minute (DONE)
 5. Create a way of inputting a piece of text that should be ignored (DONE)
-6. A way to offer stop words and remove them from the analysis
+6. A way to offer stop words and remove them from the analysis (DONE)
 
 Potentional use-cases:
 
